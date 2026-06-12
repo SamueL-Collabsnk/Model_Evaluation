@@ -130,7 +130,9 @@ reduce_lr = keras.callbacks.ReduceLROnPlateau(
     monitor = "val_loss",
     factor = 0.5,
     patience = 3,
-    min_lr = 1e-6
+    min_lr = 1e-6,
+    verbose = 1,
+    mode = "min"
 )
 
 early_stop = keras.callbacks.EarlyStopping(
@@ -142,7 +144,8 @@ early_stop = keras.callbacks.EarlyStopping(
 checkpoint = keras.callbacks.ModelCheckpoint(
     "best_cifar10.keras",
     monitor = "val_accuracy",
-    save_best_only = True
+    save_best_only = True,
+    mode = "max"
 )
 
 history = best_model.fit(
